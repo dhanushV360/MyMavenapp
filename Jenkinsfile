@@ -2,6 +2,7 @@ pipeline {
     agent any
 
     tools {
+        jdk 'JDK17'
         maven 'Maven'
     }
 
@@ -10,6 +11,14 @@ pipeline {
             steps {
                 git branch: 'main',
                     url: 'https://github.com/dhanushV360/MyMavenapp'
+            }
+        }
+
+        stage('Check Java') {
+            steps {
+                sh 'java -version'
+                sh 'javac -version'
+                sh 'mvn -version'
             }
         }
 
